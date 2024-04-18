@@ -10,14 +10,14 @@ public class ReservationRestaurant extends Reservation{
 		this.numTable = numTable;
 	}
 	
-	
+	@Override
 	public String toString() {
 		StringBuilder message = new StringBuilder();
 		message.append("Le " + this.getJour() + "/" + this.getMois() + "\nTable " + numTable + " pour le ");
 		if(numService == 1) {
 			message.append("premier service.");
 		} else if (numService == 2) {
-			message.append("deuxième service.");
+			message.append("deuxiï¿½me service.");
 		}
 		return message.toString();
 	}

@@ -2,7 +2,7 @@ package model;
 
 public abstract class EntiteReservable <T extends Formulaire>{
 	private int numero;
-	private CalendrierAnnuel calendrier;
+	protected CalendrierAnnuel calendrier;
 	
 	public int getNumero() {
 		return numero;

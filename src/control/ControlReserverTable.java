@@ -1,5 +1,6 @@
 package control;
 
+import model.CarnetClientele;
 import model.Client;
 import model.Formulaire;
 import model.FormulaireRestaurant;
@@ -10,9 +11,10 @@ import model.Restaurant;
 public class ControlReserverTable {
 	Restaurant restaurant;
 	FormulaireRestaurant[] formulaires;
+	CarnetClientele carnet;
 
 	public int[] trouverPossibilite(int jour, int mois, int nombrePersonnes, int numService) {
-		FormulaireRestaurant formulaire = new FormulaireRestaurant(jour, mois, nombrePersonnes, numService);//A COMPLETER;
+		FormulaireRestaurant formulaire = new FormulaireRestaurant(jour, mois, nombrePersonnes, numService);
 		boolean formulaireEnregistrer = false;
 		int numeroFormulaire = -1;
 		for (int i = 0; i < formulaires.length && !formulaireEnregistrer; i++) {
@@ -22,7 +24,7 @@ public class ControlReserverTable {
 				numeroFormulaire = i;
 			}
 		}
-		int[] possibilites = restaurant.donnerPossibilites(formulaire);//A COMPLETER;
+		int[] possibilites = restaurant.donnerPossibilites(formulaire);
 		int[] retour = new int[possibilites.length + 1];
 		retour[0] = numeroFormulaire;
 		for (int i = 1; i < possibilites.length + 1; i++) {
@@ -37,8 +39,8 @@ public class ControlReserverTable {
 		Reservation reservation = restaurant.reserver(numProposition, formulaireRestaurant);
 		if (reservation instanceof ReservationRestaurant) {
 			ReservationRestaurant reservationRestaurant = (ReservationRestaurant) reservation;
-			//Client client = //A COMPLETER;
-			//A COMPLETER;
+			Client client = carnet.getClient(numClient);
+			client.ajouterReservation(reservation);
 		}
 	}
 	
